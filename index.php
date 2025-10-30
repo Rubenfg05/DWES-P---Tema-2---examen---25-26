@@ -33,7 +33,7 @@ $ubicaciones = [
     ]
 ];
 
-$pedido = ["Ensalada César", "Pizza Margarita", "Café"];
+$pedido = ["Ensalada César", "Pizza Margarita", "Café","Gambas"];
 
 // TODO Filtrar platos por disponibilidad, guardando en variable $disponibles
 $disponibles = array_filter($menu, function($articulo) {
@@ -53,6 +53,42 @@ function imprimirListaArticulos($articulos){
 
 // TODO Función para imprimir un pedido
 function imprimirPedido($pedido, $menu) {
+    function imprimirPedido($pedido, $menu) {
+    echo "<table border='1' cellpadding='5' cellspacing='0'>";
+    echo "<thead><tr><th>Artículo</th><th>Precio</th></tr></thead>";
+    echo "<tbody>";
+    $total = 0;
+    $menu_map = [];
+foreach ($menu as $articulo) {
+        $menu_map[$articulo->nombre] = $articulo;
+    }
+ 
+foreach ($pedido as $nombre_pedido) {
+        echo "<tr>";
+        echo "<td>{$nombre_pedido}</td>";
+ 
+        if (!isset($menu_map[$nombre_pedido])) {
+            echo "<td>No encontrado en el menú</td>";
+        }
+else {
+     $articulo = $menu_map[$nombre_pedido];
+        if ($articulo->disponibilidad) {  
+                echo "<td>{$articulo->precio}€</td>";
+                $total += $articulo->precio;
+            } 
+else { 
+  echo "<td>No disponible</td>";
+            }
+        }
+        echo "</tr>";
+    }
+ 
+    echo "</tbody>";
+    echo "<tfoot>";
+    echo "<tr><td><strong>Total</strong></td><td><strong>{$total}€</strong></td></tr>";
+    echo "</tfoot>";
+    echo "</table>";
+}
 
 }
 
