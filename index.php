@@ -36,7 +36,9 @@ $ubicaciones = [
 $pedido = ["Ensalada César", "Pizza Margarita", "Café"];
 
 // TODO Filtrar platos por disponibilidad, guardando en variable $disponibles
-$disponibles =
+$disponibles = array_filter($menu, function($articulo) {
+    return $articulo->disponibilidad;
+});
 
 //////////////////////////////
 //        FUNCIONES         //
