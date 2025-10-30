@@ -46,7 +46,9 @@ $disponibles = array_filter($menu, function($articulo) {
 
 // TODO Función para imprimir una lista de artículos con nombre y precio
 function imprimirListaArticulos($articulos){
-
+    foreach ($articulos as $articulo) {
+        echo "<li>{$articulo->nombre}. {$articulo->precio}</li>";
+}
 }
 
 // TODO Función para imprimir un pedido
