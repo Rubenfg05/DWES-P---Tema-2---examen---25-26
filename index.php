@@ -1,6 +1,7 @@
 <?php
 // TODO Importar las clases
-
+require_once 'Articulo.php';
+require_once 'Bebida.php';
 // Array asociativo del menú
 $menu = [
     new Articulo("Ensalada César", 8.50, true, "Entrante"),
